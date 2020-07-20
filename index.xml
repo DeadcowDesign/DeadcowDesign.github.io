@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home Page on Deadcow Design</title>
+    <link>http://deadcowdesign.github.io/</link>
+    <description>Recent content in Home Page on Deadcow Design</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jun 2020 19:48:58 +0100</lastBuildDate>
+    
+	<atom:link href="http://deadcowdesign.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Accessibility</title>
+      <link>http://deadcowdesign.github.io/accessibility/</link>
+      <pubDate>Fri, 26 Jun 2020 19:48:58 +0100</pubDate>
+      
+      <guid>http://deadcowdesign.github.io/accessibility/</guid>
+      <description>Accessibility statement for Deadcow Design The web should be for everybody. This website was developed with an &amp;ldquo;accessibility first&amp;rdquo; method. The site is built entirely with standard web technology, and i
+Navigation Navigation elements use standard markup and are accessible using a keyboard. The website includes a &amp;ldquo;skip to content&amp;rdquo; link, which is the first control on the page. All links open in the current window. Links with repeated text are augmented by aria labels.</description>
+    </item>
+    
+    <item>
+      <title>Contact Me</title>
+      <link>http://deadcowdesign.github.io/contact/</link>
+      <pubDate>Fri, 26 Jun 2020 19:48:58 +0100</pubDate>
+      
+      <guid>http://deadcowdesign.github.io/contact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Privacy Policy</title>
+      <link>http://deadcowdesign.github.io/privacy/</link>
+      <pubDate>Fri, 26 Jun 2020 19:48:58 +0100</pubDate>
+      
+      <guid>http://deadcowdesign.github.io/privacy/</guid>
+      <description>I believe that we are right to be wary of the ever encroaching scope of &amp;ldquo;Big Web&amp;rdquo;; the increasing and insidious harvesting of our personal data, the constant commodification of a platform that should be for the good of all mankind has become a place of &amp;ldquo;how to turn off your ad-blocker&amp;rdquo; and full screen popups and &amp;ldquo;we would like to send you notifications/know your location&amp;rdquo;.
+This is not what the web was designed for.</description>
+    </item>
+    
+    <item>
+      <title>Creating a CSS only modal dialog box</title>
+      <link>http://deadcowdesign.github.io/posts/2020/june/css-only-modal/</link>
+      <pubDate>Fri, 26 Jun 2020 18:49:36 +0100</pubDate>
+      
+      <guid>http://deadcowdesign.github.io/posts/2020/june/css-only-modal/</guid>
+      <description>&lt;p&gt;Deadcow Design is an experiment built on a priniciple of three rules:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rule 1: Two colours only&lt;/li&gt;
+&lt;li&gt;Rule 2: No images&lt;/li&gt;
+&lt;li&gt;Rule 3: No JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wanted to see if I could recreate some traditionally JavaScript driven elements using pure CSS/HTML - starting with modal windows. In this tutorial we&amp;rsquo;ll have a look at how you can build a modal window, without JavaScript, using some clever advanced CSS selectors. We&amp;rsquo;ll also take a look at the pros and cons of this method.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Designing for brutalism</title>
+      <link>http://deadcowdesign.github.io/posts/2020/june/design-with-contraints/</link>
+      <pubDate>Fri, 26 Jun 2020 18:49:36 +0100</pubDate>
+      
+      <guid>http://deadcowdesign.github.io/posts/2020/june/design-with-contraints/</guid>
+      <description>&lt;p&gt;When designing personal projects, free from the restrictions of commercial work, I generally find myself (as, I imagine, do a lot of developers) building at the cutting edge of technology. The challenge is how far can we push? How much shiny new tech can I lever into this site? Can I have a WebGL header? How about a background made of canvas particles?&lt;/p&gt;
+&lt;p&gt;Working at the &lt;a href=&#34;http://derby.ac.uk/&#34;&gt;University of Derby&lt;/a&gt;, even with our focus on making a highly accessible and functional site, I&amp;rsquo;ve seen how a more modern web can lead to a more difficult web; how design and functionality can clash.&lt;/p&gt;
+&lt;p&gt;I wanted to see what could be done with the &lt;em&gt;minimum&lt;/em&gt;, is it possible build a functional, elegant, site with, metaphorically, one hand tied behind my back?&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

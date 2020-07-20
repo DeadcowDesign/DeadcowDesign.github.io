@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="Description" content="A modern web design and development blog">
+<title>Deadcow Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rokkitt&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css"><body><header>
+    <a href="#main" id="skip-link" role="button" class="visually-hidden">Skip to Content</a>
+    <h1><span class="title-small">Deadcow</span><span class="title-large">Design</span></h1>
+    <nav aria-label="Primary Navigation">
+        <ul>
+            <li><a href="/">Home Page</a></li>
+            
+            
+			<li><a href="/posts/">Posts</a></li>
+			
+            
+        </ul>
+    </nav>
+</header>
+<section class="main" role="main" id="main">
+    <article>
+        <h1>Creating a CSS only modal dialog box</h1>
+        <time>26.06.2020</time>
+        <p>Deadcow Design is an experiment built on a priniciple of three rules:</p>
+<ul>
+<li>Rule 1: Two colours only</li>
+<li>Rule 2: No images</li>
+<li>Rule 3: No JavaScript</li>
+</ul>
+<p>I wanted to see if I could recreate some traditionally JavaScript driven elements using pure CSS/HTML - starting with modal windows. In this tutorial we&rsquo;ll have a look at how you can build a modal window, without JavaScript, using some clever advanced CSS selectors. We&rsquo;ll also take a look at the pros and cons of this method.</p>
+<p>Before we begin let&rsquo;s just examine dialog boxes themselves. The terms &ldquo;dialog&rdquo; and &ldquo;modal&rdquo; are used almost synonymously, however, one is a feature of the other. A dialog box can be &lsquo;modal&rsquo; or &lsquo;non-modal&rsquo;. A modal dialog interrupts user workflow, sitting on top of other content and dissalowing a user from accessing the rest of the web page until it is dismissed or otherwise dealt with. A non-modal dialog does not interrupt workflow, might be moveable, or show in a specific place on a site so it doesn&rsquo;t block any other content. Think of a non-modal dialog as a polite &ldquo;Ahem; excuse me.&rdquo; and a modal dialog as more of a &ldquo;LOOK AT ME!&rdquo;</p>
+<h2 id="step-one-creating-the-markup">Step One: Creating the markup.</h2>
+<p>Firstly, we need to create an HTML element that will contain our modal box. If you&rsquo;re using pure HTML and CSS, you will need to create one of these for each modal box that you want to have displayed on your page. You&rsquo;ll need a container, an anchor tag to use for your close mechanism, and whatever content you want to have in your modal box.</p>
+<pre><code>&lt;dialog id=&quot;my-modal&quot;&gt;
+    &lt;a href=&quot;#my-modal-link&quot; title=&quot;Close modal window&quot;&gt;Close modal window&lt;/a&gt;
+    &lt;p&gt;This is your content&lt;/p&gt;
+&lt;/dialog&gt;
+</code></pre>
+<p>Note that for out modal container, we&rsquo;re using the semantic &ldquo;dialog&rdquo; HTML 5 tag. They key to this process is the ID - we&rsquo;re using anchor links to drive this, so each modal must have a unique and corresponding ID. The next thing we need to do is to mark up our modal with accessibility attributes:</p>
+<pre><code>&lt;dialog id=&quot;my-modal&quot; role=&quot;modal&quot; aria-modal=&quot;true&quot; aria-label=&quot;My modal title&quot;&gt;
+    &lt;a href=&quot;#my-modal-link&quot; title=&quot;Close modal window&quot; role=&quot;button&quot;&gt;Close modal window&lt;/a&gt;
+    &lt;p&gt;This is your content&lt;/p&gt;
+&lt;/dialog&gt;
+</code></pre>
+<p>Assisstive attributes are incredibly important. Modal windows are particularly difficult for assisstive technologies to understand, so clear accessibility attributes are essential.</p>
+<p>Next we need to create our trigger. This is a simple anchor link referenced to our dialog ID.</p>
+<pre><code>&lt;a href=&quot;#my-modal&quot; id=&quot;my-modal-link&quot;&gt;About Cookies&lt;/a&gt;
+</code></pre>
+<p>Note that our link ID is a back-reference to the close button on the modal dialog. I&rsquo;ll explain this later.</p>
+<h2 id="step-two-creating-the-css">Step Two: Creating the CSS.</h2>
+<p>We need to main pieces of CSS for our modal box representing it&rsquo;s two possible states: hidden and visible. Our hidden state is very simple:</p>
+<pre><code>dialog {
+    position: absolute;
+    left: -10000px;
+}
+</code></pre>
+<p>Note that here, we&rsquo;re just blanket applying to every &lt;dialog&gt; tag, you could use a class if you need more than one type of dialog. Why are we using the above and not just &ldquo;display: none;&rdquo; or &ldquo;visibility: hidden;&rdquo;? Accessibility. Using those attributes, either of them, depending upon the screenreader, will render this content invisible, and not even changing that state will allow the screen reader to read it. By placing the content off-screen with absolute positioning, it remains within the document, and therefore accessible to screen-readers, but also removes it from view. You can also, in theory, enforce this with !important, but personally I&rsquo;m not a fan of using it. If somebody wants to override my styles for whatever reason, they should be allowed to do it; even if it breaks the site.</p>
+<p>Here comes the CSS magic.</p>
+<pre><code>dialog:target {
+    display: block;
+    position: fixed;
+    max-width: 50%;
+    top: 50%;
+    left: 50%;
+    padding: 1em;
+    transform: translate(-50%, -50%);
+}
+</code></pre>
+<p>This is our &ldquo;visible&rdquo; state. The piece of magic here is &ldquo;dialog:target&rdquo;. :target is a pseudo-attribute which is basically &ldquo;If this element is the target of an anchor link&rdquo;. So when we click the cookies modal anchor tag, this changes the URL to https://example.com/#cookies‑modal which matches the id of our modal dialog which triggers the above CSS which displays the dialog box. Also here we&rsquo;re using a technique for vertical and horizontal alignment within a web page - firstly we position our modal at 50%; in CSS, however, the origin point of our modal is at the top left, which means our top left corner is at the centre of the screen. To fix this we use a transform which uses the element&rsquo;s dimensions to move it 50% of it&rsquo;s height and width, so it is correctly centered in the screen.</p>
+<p>Remember earlier we added a backlink on our close button which references our original link? This is a workaround for an issue with this technique. To close this dialog box requires another link to be clicked so that the URL changes and the above CSS rule no longer applies. We can&rsquo;t use a void href: using href=&rdquo;&rdquo; causes the page to reload, we dont want that; using href=&quot;javascript.void(0)&rdquo; doesn&rsquo;t change the URL, so we can&rsquo;t use that; that leaves us with href=&rdquo;#&rdquo;, which works, but will scroll the page to the top when we click the close button, again, probably not ideal. By using a backlink, when we click the close button, the page will scroll back to the link trigger.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>While, as we&rsquo;ve demonstrated, it&rsquo;s technically <em>possible</em> to create a modal box using only CSS and HTML, it&rsquo;s probably not a good idea. While this technique is fast, easy to implement, and driven with no active code; interacting with our modal box creates a history chain in the browser which the user will have to navigate back through. For example, if I go to:</p>
+<p>https://example.com/</p>
+<p>Then I click on the cookies banner:</p>
+<p>https://example.com/#cookies-modal</p>
+<p>Then I close the cookies banner:</p>
+<p>https://example.com/#cookies-link</p>
+<p>I&rsquo;ve created two new history items that the user will have to click through if they use their browser &ldquo;back&rdquo; button</p>
+    </article>
+</section>
+    <footer>
+        <nav aria-label="Secondary navigation">
+            <ul>
+                
+                
+                <li><a href="/accessibility/">Accessibility</a></li>
+                
+                <li><a href="/contact/">Contact Me</a></li>
+                
+                <li><a href="/privacy/">Privacy Policy</a></li>
+                
+                
+            </ul>
+        </nav>
+    </footer></body>
+</html>
