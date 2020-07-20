@@ -1,0 +1,212 @@
+/* These are the only two colours allowed */
+:root {
+    --light-color: white;
+    --dark-color: black;
+    --thin-box-shadow: 0.75em 0.75em 0 var(--dark-color);
+    --heavy-box-shadow: 1em 1em 0 var(--dark-color);
+    --thin-border-dark: 0.5em solid var(--dark-color);
+    --heavy-border-dark: 1em solid var(--dark-color);
+    --thin-border-light: 0.5em solid var(--light-color);
+    --heavy-border-light: 1em solid var(--light-color);
+
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    color: var(--dark-color);
+
+    background-color: var(--light-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    height: 100%;
+}
+
+/*
+Global defaults
+*/
+
+p {
+    margin: 1em 0 0.25em;
+}
+
+a {
+    color: var(--dark-color);
+    text-decoration: none;
+    border-bottom: 0.15em solid var(--dark-color);
+}
+
+
+a:hover, a:active {
+    font-weight: 600;
+}
+
+
+a[href^="http"]:after {
+    content: '\02197';
+    font-size: 0.7em;
+    font-weight: 600;
+    margin-bottom: 0.25em;
+}
+
+
+code {
+    background: var(--dark-color);
+    color: var(--light-color);
+    display: inline-block;
+    padding: 1em;
+    border: var(--thin-border-light);
+    box-shadow: var(--thin-box-shadow);
+}
+
+blockquote {
+    border-left: var(--thin-border-dark);
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+}
+
+/*
+Module Overrides
+*/
+header {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+header a {
+    color: var(--dark-color);
+}
+
+header h1 {    
+    border-top: var(--thin-border-dark);
+    border-bottom: var(--thin-border-dark);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    line-height: 1.2;
+    padding: 0.5em;
+    padding-left: 1em;
+    text-transform: uppercase;
+}
+
+header h1 .title-small {
+    font-size: 3em;
+    font-weight: 400;
+}
+header h1 .title-large {
+    font-size: 4em;
+    font-weight: 800;
+}
+
+header nav {
+    margin: 1.5em 0;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+nav li {
+    display: block;
+    padding: 1em;
+    text-align: center;
+}
+
+#skip-link:focus {
+    left: 1em;
+    top: 1em;
+}
+footer {
+    background-color: var(--dark-color);
+    padding: 1em 0;
+}
+
+footer a, dialog a {
+    color: var(--light-color);
+    border-bottom: 0.15em solid var(--light-color);
+}
+
+footer a:visited, dialog a:visited {
+    border-bottom: 0.15em dashed var(--light-color);
+}
+
+dialog {
+    position: absolute;
+    left: -10000px;
+    background: var(--dark-color);
+    color: var(--light-color);
+}
+
+dialog:target {
+    display: block;
+    position: fixed;
+    max-width: 50%;
+    top: 50%;
+    left: 50%;
+    padding: 1em;
+    transform: translate(-50%, -50%);
+    border: 0.5em solid var(--light-color);
+    box-shadow: var(--heavy-box-shadow);
+}
+
+dialog a {
+    margin-bottom: 1em;
+}
+
+section.stories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 1em 1em 1em;
+    font-size: 1.2em;
+}
+
+/**
+Meaty stuff - this is for the articles
+**/
+
+section p, section li {
+    font-family: "Rokkitt", serif;
+    line-height: 1.25;
+    font-size: 1.3rem;
+}
+
+section ul {
+    margin-left: 2em;
+}
+
+
+section.main {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2em;
+}
+
+section.main h1 {
+    font-size: 3em;
+}
+
+section.main p, section.main li {
+    font-size: 1.5em;   
+}
+
+section.stories article{
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding: 0 1em 1em 0;
+    column-count: 2;
+    column-rule: 0.01em solid var(--dark-color);
+    column-fill: auto;
+    border-right: var(--thin-border-dark);
+    border-bottom: var(--thin-border-dark);
+
+}
