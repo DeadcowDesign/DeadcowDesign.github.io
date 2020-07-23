@@ -1,4 +1,24 @@
-/* These are the only two colours allowed */
+/* jost-regular - latin */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/jost-v3-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/jost-v3-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/jost-v3-latin-regular.woff') format('woff'), /* Modern Browsers */
+  }
+
+/* rokkitt-regular - latin */
+@font-face {
+    font-family: 'Rokkitt';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/rokkitt-v19-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/rokkitt-v19-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+    /* These are the only two colours allowed */
 :root {
     --light-color: white;
     --dark-color: black;
@@ -8,21 +28,21 @@
     --heavy-border-dark: 1em solid var(--dark-color);
     --thin-border-light: 0.5em solid var(--light-color);
     --heavy-border-light: 1em solid var(--light-color);
+    --heading-font: 'Jost', sans-serif;
+    --content-font: "Rokkitt", serif;
 
     box-sizing: border-box;
-    font-family: 'Jost', sans-serif;
+
+    font-family: var(--content-font);
     font-size: 18px;
     color: var(--dark-color);
 
     background-color: var(--light-color);
 }
 
-* {
+body {
     margin: 0;
     padding: 0;
-}
-
-body {
     position: relative;
     height: 100%;
 }
@@ -30,9 +50,13 @@ body {
 /*
 Global defaults
 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 1rem;
+}
 
-p {
-    margin: 1em 0 0.25em;
+time {
+    margin-bottom: 1rem;
 }
 
 a {
@@ -62,6 +86,7 @@ code {
     padding: 1em;
     border: var(--thin-border-light);
     box-shadow: var(--thin-box-shadow);
+    margin-bottom: 1rem;
 }
 
 blockquote {
@@ -81,10 +106,6 @@ Module Overrides
 header {
     font-size: 1rem;
     margin-top: 1rem;
-}
-
-header a {
-    color: var(--dark-color);
 }
 
 header h1 {    
@@ -119,6 +140,9 @@ nav ul {
 nav li {
     display: block;
     padding: 1em;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.3rem;
+    color: var(--dark-color);
     text-align: center;
 }
 
@@ -126,41 +150,15 @@ nav li {
     left: 1em;
     top: 1em;
 }
+
 footer {
     background-color: var(--dark-color);
     padding: 1em 0;
 }
 
-footer a, dialog a {
+footer nav li a {
     color: var(--light-color);
     border-bottom: 0.15em solid var(--light-color);
-}
-
-footer a:visited, dialog a:visited {
-    border-bottom: 0.15em dashed var(--light-color);
-}
-
-dialog {
-    position: absolute;
-    left: -10000px;
-    background: var(--dark-color);
-    color: var(--light-color);
-}
-
-dialog:target {
-    display: block;
-    position: fixed;
-    max-width: 50%;
-    top: 50%;
-    left: 50%;
-    padding: 1em;
-    transform: translate(-50%, -50%);
-    border: 0.5em solid var(--light-color);
-    box-shadow: var(--heavy-box-shadow);
-}
-
-dialog a {
-    margin-bottom: 1em;
 }
 
 section.stories {
@@ -175,7 +173,6 @@ Meaty stuff - this is for the articles
 **/
 
 section p, section li {
-    font-family: "Rokkitt", serif;
     line-height: 1.25;
     font-size: 1.3rem;
 }
@@ -185,21 +182,21 @@ section ul {
 }
 
 
-section.main {
+article.article {
     width: 80%;
     margin: auto;
     margin-bottom: 2em;
 }
 
-section.main h1 {
-    font-size: 3em;
+article.article h1 {
+    font-size: 3rem;
 }
 
-section.main p, section.main li {
-    font-size: 1.5em;   
+article.article p, article.article li, article.article time {
+    font-size: 1.5rem;   
 }
 
-section.stories article{
+article.summary {
     margin-bottom: 1em;
     margin-right: 1em;
     padding: 0 1em 1em 0;
